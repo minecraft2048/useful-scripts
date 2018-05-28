@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#SPDX-License-Identifier: MIT
 from telnetlib import Telnet
 from subprocess import check_output,CalledProcessError
 
