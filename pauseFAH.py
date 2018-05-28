@@ -27,6 +27,9 @@ for proc in PROCLIST:
         print(f"{proc} is running")    
         break
         
+#Change BAT1 and ADP1 to your actual device name
+#You can find those by running ls /sys/class/power_supply
+#BAT* is battery while ADP* is AC power
 
 with open('/sys/class/power_supply/BAT1/capacity','r') as bat:
     battery_level = int(bat.readline())
