@@ -1,12 +1,20 @@
 #!/usr/bin/env python
 #SPDX-License-Identifier: MIT
+
+#Pauses Folding@Home if running on battery power, or battery is below a certain percentage,
+#or a program is running
+
+#Supports only Linux for now
+#Run this script periodically for automation, for example using systemd user timers
+
 from telnetlib import Telnet
 from subprocess import check_output,CalledProcessError
 
 PROCLIST = ['dota2'] #List of programs that will pause FAHClient if its running
-BATTERY_THRESHOLD = 88 #When FAHClient will pause
+BATTERY_THRESHOLD = 88 #Battery percentage that FAHClient will pause
 
 program_running = False
+on_ac_power = False
 
 for proc in PROCLIST:
     interm = 0
@@ -19,6 +27,7 @@ for proc in PROCLIST:
         print(f"{proc} is running")    
         break
         
+
 with open('/sys/class/power_supply/BAT1/capacity','r') as bat:
     battery_level = int(bat.readline())
 
