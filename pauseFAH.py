@@ -10,7 +10,7 @@
 from telnetlib import Telnet
 from subprocess import check_output,CalledProcessError
 
-PROCLIST = ['dota2'] #List of programs that will pause FAHClient if its running
+PROCLIST = ['dota2','NSUNS4.exe','NSUNS.exe'] #List of programs that will pause FAHClient if its running
 BATTERY_THRESHOLD = 88 #Battery percentage that FAHClient will pause
 
 program_running = False
@@ -24,9 +24,9 @@ for proc in PROCLIST:
         pass
     if interm:
         program_running = True
-        print(f"{proc} is running")    
+        print(f"{proc} is running")
         break
-        
+
 #Change BAT1 and ADP1 to your actual device name
 #You can find those by running ls /sys/class/power_supply
 #BAT* is battery while ADP* is AC power
@@ -44,4 +44,3 @@ with Telnet('localhost',36330) as tn:
     else:
         print("Pausing FAH")
         tn.write(b'pause')
-
