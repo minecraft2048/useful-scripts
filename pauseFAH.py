@@ -10,7 +10,7 @@
 from telnetlib import Telnet
 from subprocess import check_output,CalledProcessError
 
-PROCLIST = ['dota2','NSUNS4.exe','NSUNS.exe'] #List of programs that will pause FAHClient if its running
+PROCLIST = ['dota2','NSUNS4.exe','NSUNS1.exe','NSUNS2.exe','PCSX2'] #List of programs that will pause FAHClient if its running
 BATTERY_THRESHOLD = 88 #Battery percentage that FAHClient will pause
 
 program_running = False
